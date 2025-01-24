@@ -98,7 +98,7 @@ export const MainContent = styled.div.withConfig({
   transition: margin 0.3s;
   margin-left: ${props => props.isOpen ? "220px" : "0px"};
   min-height: 100vh;
-  background: ${youtubeTheme.background};
+  background: #101010;
   color: ${youtubeTheme.textPrimary};
   padding: 24px;
 `
