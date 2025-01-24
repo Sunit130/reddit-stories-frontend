@@ -111,4 +111,8 @@ export const SectionTitle = styled.h2`
   color: ${youtubeTheme.textPrimary};
   margin: 41px 0 16px 16px;
   font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
 `

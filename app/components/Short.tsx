@@ -43,7 +43,7 @@ interface ShortProps {
   onDelete: () => void;
 }
 
-export function Short({ title, videoId, onUpload, onDelete }: ShortProps) {
+export function Short({ title, videoId, onDelete }: ShortProps) {
 
   const makeVideoHandler = async () => {
     const isUploaded = await makeVideoPublic(videoId=videoId)

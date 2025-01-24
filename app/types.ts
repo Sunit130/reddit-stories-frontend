@@ -25,4 +25,10 @@ export interface MakeVideoModalInterface {
     id: string; 
     title: string; 
     description: string
-  }
+}
+
+export interface ScriptInterface { 
+    id: string; 
+    title: string; 
+    description: string
+}

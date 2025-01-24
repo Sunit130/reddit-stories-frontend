@@ -1,17 +1,17 @@
 "use client"
 import { useState } from "react";
 import { useReditRotContext } from '@/context/ReditRotContext'
-import { Grid, MainContent, Section, SectionTitle, youtubeTheme } from '../components/common/styled';
+import { Grid, MainContent, Section, SectionTitle } from '../components/common/styled';
 import { Script } from '../components/Script';
 import { ScriptEditModal } from '../components/ScriptEditModal';
+import { ScriptInterface } from "../types";
 
 export default function ContentScripts() {
   const { state } = useReditRotContext();
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedScript, setSelectedScript] = useState<{ id: string; title: string; description: string}>();
+  const [selectedScript, setSelectedScript] = useState<ScriptInterface>();
 
-
-  const handleScriptEdit = (scriptData: any) => {
+  const handleScriptEdit = (scriptData: ScriptInterface) => {
     setSelectedScript(scriptData);
     setModalOpen(true);
   };

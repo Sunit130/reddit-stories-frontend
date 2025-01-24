@@ -56,12 +56,12 @@ export interface ScriptEditModalProps {
 }
 
 export function ScriptEditModal({ isOpen, onClose, scriptData, isMakeVideoDisable }: ScriptEditModalProps) {
-  if (!isOpen) return null;
-
   const { dispatch } = useReditRotContext();
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const [isPostProcessing, setIsPostProcessing] = useState<{ status: 'edit' | 'in-progess' | 'queued' }>({status: 'edit'});
+  
+  if (!isOpen) return null;
 
 
   const sendPostVideoProcessing = async () => {

@@ -1,11 +1,11 @@
 "use client"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
-import { X, GripVertical, ChevronRight, Edit } from 'lucide-react'
+import { GripVertical, ChevronRight, Edit } from 'lucide-react'
 import { IconButton, Card, youtubeTheme } from './common/styled'
 import { useReditRotContext } from '@/context/ReditRotContext'
-import { RedditPost } from '@/app/types'
 import { ScriptEditModal } from './ScriptEditModal'
+import { RedditPost } from '../types'
 
 const SidebarWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== 'isOpen',
@@ -66,8 +66,8 @@ export function RightSidebar({ isOpen, onToggle }: RightSidebarProps) {
   const {state, dispatch} = useReditRotContext();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedScript, setSelectedScript] = useState<{ id: string; title: string; description: string}>();
-
-  const handleScriptEdit = (post: any) => {
+  
+  const handleScriptEdit = (post: RedditPost) => {
     const scriptData = {
       id: post["post_id"],
       title: post["post_revised_title"],
@@ -93,7 +93,7 @@ export function RightSidebar({ isOpen, onToggle }: RightSidebarProps) {
         
         {state.priorityQueue && state.priorityQueue.map((post, index) => (
           <QueuedMessage 
-            key={post["post_id"]}
+            key={`${post["post_id"]}-${index}`}
           >
             <div style={{ display: 'flex', alignItems: 'center', height: '50px', overflow: 'hidden', textWrap: 'nowrap' }}>
               <DragHandle>

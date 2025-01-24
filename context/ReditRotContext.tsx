@@ -6,8 +6,8 @@ export const initialState: ReditRotStateType = {
     publicPosts: [],
     unlistedPosts: [],
     contentPosts: [],
-    isLeftSidebarOpen: true,
-    isRightSidebarOpen: true,
+    isLeftSidebarOpen: false,
+    isRightSidebarOpen: false,
     isMakeVideoModalOpen: false,
     makeVideoModalScript: undefined
 };

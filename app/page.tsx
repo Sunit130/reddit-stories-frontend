@@ -1,21 +1,22 @@
 "use client"
-import styled from 'styled-components'
-import { Grid, MainContent, Section, SectionTitle, youtubeTheme } from './components/common/styled'
+import { Grid, MainContent, Section, SectionTitle } from './components/common/styled'
 import { Short } from './components/Short'
 import { Script } from './components/Script'
 import { useEffect, useState } from "react";
 import { ScriptEditModal } from "./components/ScriptEditModal";
 import { useReditRotContext } from '@/context/ReditRotContext'
 import { fetchPosts } from './apis'
+import { ScriptInterface } from './types';
+import Loader from './components/common/Loader';
 
 
 export default function Home() {
   const { state, dispatch } = useReditRotContext();
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedScript, setSelectedScript] = useState<{ id: string; title: string; description: string}>();
+  const [selectedScript, setSelectedScript] = useState<ScriptInterface>();
 
 
-  const handleScriptEdit = (scriptData: any) => {
+  const handleScriptEdit = (scriptData: ScriptInterface) => {
     setSelectedScript(scriptData);
     setModalOpen(true);
   };
@@ -36,7 +37,7 @@ export default function Home() {
     <>
         <MainContent isOpen={state.isLeftSidebarOpen}>
             <Section>
-              <SectionTitle>Latest</SectionTitle>
+              <SectionTitle>Latest {!state.unlistedPosts?.length && <Loader/>}</SectionTitle>
               <Grid>
                 {state.unlistedPosts && state.unlistedPosts.slice(0,1).map((post, i) => (
                   <Short 
@@ -50,7 +51,7 @@ export default function Home() {
               </Grid>
             </Section>
             <Section>
-              <SectionTitle>Public</SectionTitle>
+              <SectionTitle>Public  {!state.publicPosts?.length && <Loader/>}</SectionTitle>
               <Grid>
                 {state.publicPosts && state.publicPosts.slice(0,5).map((post, i) => (
                   <Short 
@@ -65,7 +66,7 @@ export default function Home() {
             </Section>
 
             <Section>
-              <SectionTitle>Video Ready</SectionTitle>
+              <SectionTitle>Video Ready  {!state.unlistedPosts?.length && <Loader/>}</SectionTitle>
               <Grid>
                 {state.unlistedPosts && state.unlistedPosts.slice(0,5).map((post, i) => (
                   <Short 
@@ -81,7 +82,7 @@ export default function Home() {
 
 
             <Section>
-              <SectionTitle>Pending Scripts</SectionTitle>
+              <SectionTitle>Pending Scripts  {!state.contentPosts?.length && <Loader/>}</SectionTitle>
               <Grid>
                 {state.contentPosts && state.contentPosts.slice(0,5).map((post, i) => (
                   <Script 
