@@ -8,6 +8,7 @@ import { useReditRotContext } from '@/context/ReditRotContext'
 import { fetchPosts } from './apis'
 import { ScriptInterface } from './types';
 import Loader from './components/common/Loader';
+import Note from './components/Note';
 
 
 export default function Home() {
@@ -36,6 +37,7 @@ export default function Home() {
   return (
     <>
         <MainContent isOpen={state.isLeftSidebarOpen}>
+            <Note />
             <Section>
               <SectionTitle>Latest {!state.unlistedPosts?.length && <Loader/>}</SectionTitle>
               <Grid>
