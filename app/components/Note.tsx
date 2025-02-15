@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const NoteMessage = styled.div`
-    background-color: #a1a1a1eb; /* Light bright background */
+    background-color: #5f5f5feb; /* Light bright background */
     color: #ffffff; /* Dark red text for contrast */
     padding: 15px;
     border-left: 5px solid #ff4c4c; /* Red left border for emphasis */
